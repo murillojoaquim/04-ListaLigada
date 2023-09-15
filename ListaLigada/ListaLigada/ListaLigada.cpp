@@ -145,15 +145,68 @@ void inserirElemento()
 
 void excluirElemento()
 {
-	
+	NO* aux = primeiro;
+	NO* anterior = NULL;
+	int remover;
+	bool elementoEncontrado = false;
+
+	if (aux == NULL) {
+		cout << "Lista vazia." << endl;
+		return;
+	}
+
+	cout << "Digite o valor que sera removido: ";
+	cin >> remover;
+
+	while (aux != NULL) {
+		if (aux->valor == remover) {
+			if (anterior == NULL) {
+				primeiro = aux->prox;
+			}
+			else {
+				anterior->prox = aux->prox;
+			}
+			free (aux);
+			cout << "Elemento removido com sucesso." << endl;
+			elementoEncontrado = true;
+			return;
+		}
+		else {
+			anterior = aux;
+			aux = aux->prox;
+		}
+	}
+
+	if (elementoEncontrado == false) {
+		cout << "Elemento nao encontrado." << endl;
+	}
 }
 
-void buscarElemento()
-{
-	
-}
+	void buscarElemento() {
+		NO* aux = primeiro;
+		int busca;
+		bool achado = false;
+		if (aux == NULL) {
+			cout << "Lista vazia." << endl;
+		}
+		else {
+			cout << "Digite o valor a ser buscado: ";
+			cin >> busca;
+			while (aux != NULL) {
+				if (busca == aux->valor) {
+					cout << "Valor presente na lista - ENCONTRADO." << endl;
+					achado = true;
+					return;
+				}
+				else {
+					aux = aux->prox;
+				}
+			} if (achado == false) {
+				cout << "Valor nao encontrado na lista - NAO ENCONTRADO" << endl;
+			}
 
-
+		}
+	}
 
 // retorna um ponteiro para o elemento buscado
 // ou NULL se o elemento não estiver na lista
